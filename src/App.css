@@ -1,0 +1,10 @@
+.App {
+  border: 5px solid #000;
+  width: 1200px;
+  height: 500px;
+  box-sizing: border-box;
+  margin: 200px;
+}
+.App__title {
+  height: 40px;
+}
