@@ -11,9 +11,10 @@ import pageState from "./store/pageState";
 
 function App() {
   console.log("App render");
+
   useEffect(() => {
     console.log("App mount");
-    return console.log("App unmount");
+    return () => console.log("App unmount");
   }, []);
 
   const [number, setNumber] = useState(0);
@@ -51,6 +52,16 @@ function App() {
       <button onClick={() => setNumber((prev) => prev + 1)}>
         localState +
       </button>
+      {data &&
+        data.map((item) => {
+          return (
+            <img
+              src={item.urls.small}
+              key={item.id}
+              style={{ width: "50px" }}
+            />
+          );
+        })}
       <Header />
       <Main />
       <Footer />
@@ -59,4 +70,3 @@ function App() {
 }
 
 export default App;
-``;

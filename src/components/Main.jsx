@@ -1,11 +1,15 @@
 import { useRecoilValue } from "recoil";
 import pageState from "../store/pageState";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import searchState from "../store/searchState";
 
 function Main() {
   console.log("Main Render");
+  useEffect(() => {
+    console.log("Main mount");
+    return () => console.log("Main unmount");
+  }, []);
   const [number, setNumber] = useState(0);
 
   const searchValue = useRecoilValue(searchState);
@@ -37,6 +41,16 @@ function Main() {
       <h1>Main</h1>
       <h3>localState: {number}</h3>
       <h3>RecoilState: {pageValue}</h3>
+      {data &&
+        data.map((item) => {
+          return (
+            <img
+              src={item.urls.small}
+              key={item.id}
+              style={{ width: "50px" }}
+            />
+          );
+        })}
       <button onClick={handleClick2}>State +</button>
     </div>
   );

@@ -1,16 +1,19 @@
 import { useSetRecoilState } from "recoil";
 import pageState from "../store/pageState";
-import React from "react";
+import React, { useEffect } from "react";
 import searchState from "../store/searchState";
 
 function Footer() {
   console.log("Footer Render");
+  useEffect(() => {
+    console.log("Footer mount");
+    return () => console.log("Footer unmount");
+  }, []);
 
   const setPage = useSetRecoilState(pageState);
   const setSearch = useSetRecoilState(searchState);
 
   const handleClick = () => {
-    setPage((prev) => prev + 1);
     setSearch("Japan");
   };
 
